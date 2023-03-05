@@ -20,7 +20,8 @@ OUTDIR ?= $(CURDIR)/out
 PKG=github.com/awslabs/soci-snapshotter
 VERSION=$(shell git describe --match 'v[0-9]*' --dirty='.m' --always --tags)
 REVISION=$(shell git rev-parse HEAD)$(shell if ! git diff --no-ext-diff --quiet --exit-code; then echo .m; fi)
-GO_LD_FLAGS=-ldflags '-s -w -X $(PKG)/version.Version=$(VERSION) -X $(PKG)/version.Revision=$(REVISION) $(GO_EXTRA_LDFLAGS)'
+GO_BUILD_LDFLAGS ?= -s -w
+GO_LD_FLAGS=-ldflags '$(GO_BUILD_LDFLAGS) -X $(PKG)/version.Version=$(VERSION) -X $(PKG)/version.Revision=$(REVISION) $(GO_EXTRA_LDFLAGS)'
 SOCI_SNAPSHOTTER_PROJECT_ROOT ?= $(shell pwd)
 LTAG_TEMPLATE_FLAG=-t ./.headers
 FBS_FILE_PATH=$(CURDIR)/ztoc/fbs/ztoc.fbs

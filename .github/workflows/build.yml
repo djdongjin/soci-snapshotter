@@ -26,6 +26,7 @@ jobs:
       - run: ./scripts/check-ltag.sh
       - run: ./scripts/check-dco.sh
       - run: ./scripts/check-lint.sh
+      - run: ./scripts/check-no-patent.sh
       - run: PATH=$PATH:$(pwd) ./scripts/check-flatc.sh
   test:
     runs-on: ubuntu-20.04
