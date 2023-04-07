@@ -80,7 +80,7 @@ const (
 
 	// Amount of time the background fetcher will wait once a new layer comes in
 	// before (re)starting fetches.
-	defaultBgSilencePeriod = 2 * time.Second
+	defaultBgSilencePeriod = 30 * time.Second
 
 	// Specifies how often the fetch will occur.
 	// The background fetcher will fetch a single span every `defaultFetchPeriod`.
